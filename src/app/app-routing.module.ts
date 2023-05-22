@@ -8,8 +8,14 @@ import {
 import { LoginComponent } from "./login/login.component";
 import { AboutComponent } from "./about/about.component";
 import { CoursesModule } from "./courses/courses.module";
+import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 
 const routes: Routes = [
+  {
+    path: "",
+    redirectTo: "/courses",
+    pathMatch: "full",
+  },
   {
     path: "courses",
     loadChildren: () =>
@@ -22,6 +28,10 @@ const routes: Routes = [
   {
     path: "about",
     component: AboutComponent,
+  },
+  {
+    component: PageNotFoundComponent,
+    path: "**",
   },
 ];
 
