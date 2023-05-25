@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { licensePlateSouthAmericaValidator } from "../../shared/validators/licensePlate";
 
 @Component({
   selector: "license",
@@ -7,7 +8,7 @@ import { FormBuilder, FormGroup } from "@angular/forms";
   styleUrls: ["./license.component.scss"],
 })
 export class LicenseComponent implements OnInit {
-  form: FormGroup;
+  form: FormGroup = new FormGroup({});
 
   constructor(private fb: FormBuilder) {}
 
@@ -17,11 +18,15 @@ export class LicenseComponent implements OnInit {
 
   builderForm(): void {
     this.form = this.fb.group({
-      licensePlate: "aaaaaa",
+      licensePlate: [
+        "",
+        [Validators.required, licensePlateSouthAmericaValidator()],
+      ],
     });
   }
 
   submitForm(): void {
     console.log("licensePlate", this.form.value.licensePlate);
+    console.log(this.form.valid);
   }
 }

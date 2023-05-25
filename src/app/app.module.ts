@@ -1,5 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -29,7 +29,7 @@ import { SharedModule } from "./shared/shared.module";
 import { AboutComponent } from "./about/about.component";
 import { HashLocationStrategy, LocationStrategy } from "@angular/common";
 import { ChatComponent } from "./chat/chat.component";
-import { LicenseComponent } from './licensePlate/license/license.component';
+import { LicenseComponent } from "./licensePlate/license/license.component";
 
 @NgModule({
   declarations: [
@@ -57,5 +57,6 @@ import { LicenseComponent } from './licensePlate/license/license.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}
