@@ -9,6 +9,7 @@ import { LoginComponent } from "./login/login.component";
 import { AboutComponent } from "./about/about.component";
 import { CoursesModule } from "./courses/courses.module";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
+import { LicenseComponent } from "./licensePlate/license/license.component";
 
 const routes: Routes = [
   {
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path: "about",
     component: AboutComponent,
+  },
+  {
+    path: "license",
+    component: LicenseComponent,
   },
   {
     component: PageNotFoundComponent,

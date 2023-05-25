@@ -29,6 +29,7 @@ import { SharedModule } from "./shared/shared.module";
 import { AboutComponent } from "./about/about.component";
 import { HashLocationStrategy, LocationStrategy } from "@angular/common";
 import { ChatComponent } from "./chat/chat.component";
+import { LicenseComponent } from './licensePlate/license/license.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ChatComponent } from "./chat/chat.component";
     PageNotFoundComponent,
     LoginComponent,
     ChatComponent,
+    LicenseComponent,
   ],
   imports: [
     BrowserModule,

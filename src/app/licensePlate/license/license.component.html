@@ -1,0 +1,14 @@
+<form [formGroup]="form" (ngSubmit)="submitForm()">
+  <mat-form-field>
+    <mat-label>License Plate Check</mat-label>
+    <input matInput formControlName="licensePlate" />
+  </mat-form-field>
+  <button
+    type="submit"
+    mat-raised-button
+    color="primary"
+    [disabled]="!form.valid"
+  >
+    Login
+  </button>
+</form>
