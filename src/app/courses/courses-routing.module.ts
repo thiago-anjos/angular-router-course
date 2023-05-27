@@ -10,10 +10,10 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: "courseUrl",
+    path: ":courseUrlDynamic",
     component: CourseComponent,
     resolve: {
-      course: CourseResolver,
+      courseData: CourseResolver,
     },
   },
 ];
