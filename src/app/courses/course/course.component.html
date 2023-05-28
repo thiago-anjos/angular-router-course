@@ -8,5 +8,7 @@
 
     <img class="course-thumbnail" [src]="course.iconUrl" *ngIf="course" />
     <img class="course-thumbnail" [src]="course.background" *ngIf="course" />
+    <!-- This router-outlet will take care of of children paths from courses-routing-module -->
+    <router-outlet></router-outlet>
   </div>
 </ng-container>
