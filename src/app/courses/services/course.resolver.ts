@@ -18,6 +18,6 @@ export class CourseResolver implements Resolve<Course> {
     state: RouterStateSnapshot
   ): Course | Observable<Course> | Promise<Course> {
     const courseUrl = route.paramMap.get("courseUrlDynamic");
-    return this.courses.loadCourseByUrl(courseUrl).pipe(delay(1000));
+    return this.courses.loadCourseByUrl(courseUrl).pipe(delay(0));
   }
 }
