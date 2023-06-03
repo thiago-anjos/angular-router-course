@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { LessonDetail } from "../model/lesson-detail";
+import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
 
 @Component({
   selector: "lesson",
@@ -8,28 +10,29 @@ import { LessonDetail } from "../model/lesson-detail";
   styleUrls: ["./lesson-detail.component.css"],
 })
 export class LessonDetailComponent implements OnInit {
-  lesson: LessonDetail;
+  lesson$: Observable<LessonDetail>;
 
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(private routeActive: ActivatedRoute, private router: Router) {
     console.log("Created LessonDetailComponent...");
   }
 
   ngOnInit() {
-    this.lesson = this.route.snapshot.data["lessonData"];
-    console.log(this.lesson);
+    this.lesson$ = this.routeActive.data.pipe(
+      map((data) => data["lessonData"])
+    );
   }
 
   previous(lesson: LessonDetail) {
     // this.route.parent volta para a rota pai reactive-angular-course
     // depois adiciona o que precisa o que está neste array ["lessons", lesson.seqNo - 1]
     this.router.navigate(["lessons", lesson.seqNo - 1], {
-      relativeTo: this.route.parent,
+      relativeTo: this.routeActive.parent,
     });
   }
 
   next(lesson: LessonDetail) {
     this.router.navigate(["lessons", lesson.seqNo + 1], {
-      relativeTo: this.route.parent,
+      relativeTo: this.routeActive.parent,
     });
   }
 }
