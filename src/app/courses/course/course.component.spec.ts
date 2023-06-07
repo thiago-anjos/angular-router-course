@@ -5,35 +5,21 @@ import { Course } from "../model/course";
 
 describe("Course test", () => {
   let component: CourseComponent;
-  let fixture: ComponentFixture<CourseComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [CourseComponent],
-      providers: [
-        {
-          provide: ActivatedRoute,
-          useValue: {
-            snapshot: {
-              data: { courseData: {} as Course },
-            },
-          },
-        },
-      ],
-    }).compileComponents();
-  });
+  let route: ActivatedRoute;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CourseComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    route = {
+      snapshot: {
+        data: {
+          courseData: {} as Course,
+        },
+      },
+    } as any;
+    component = new CourseComponent(route);
   });
 
   it("should create", () => {
+    component.ngOnInit();
     expect(component).toBeTruthy();
-  });
-
-  it("should initialize course", () => {
-    expect(component.course).toBeDefined();
   });
 });

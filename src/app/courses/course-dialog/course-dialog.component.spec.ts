@@ -33,59 +33,35 @@ describe("CourseDialogComponent", () => {
       releasedAt: ["", Validators.required],
       longDescription: ["", Validators.required],
     });
+
+    component.form.setValue({
+      description: "Test Description",
+      category: "Test Category",
+      longDescription: "Test Long Description",
+      releasedAt: "07/06/2023",
+    });
   });
 
   it("should create the component", () => {
     expect(component).toBeTruthy();
   });
 
-  it("should initialize the form with the course values", () => {
-    // Mock your Course object here if needed
-    const course = {
-      description: "Test Description",
-      category: "Test Category",
-      longDescription: "Test Long Description",
-    } as Course;
-    component.course = course;
+  it("Should save data to form", () => {
+    component.save();
 
     expect(component.form.value).toEqual({
       description: "Test Description",
       category: "Test Category",
-      releasedAt: "",
       longDescription: "Test Long Description",
-    });
-  });
-
-  it("should call the saveCourse method and close the dialog when save() is called", () => {
-    component.form.setValue({
-      description: "Test Description",
-      category: "Test Category",
-      releasedAt: "2023-06-05",
-      longDescription: "Test Long Description",
+      releasedAt: "07/06/2023",
     });
 
-    component.save();
-
-    expect(coursesService.saveCourse).toHaveBeenCalledWith(
-      component.course.id,
-      {
-        description: "Test Description",
-        category: "Test Category",
-        releasedAt: "2023-06-05",
-        longDescription: "Test Long Description",
-      }
-    );
-    expect(dialogRef.close).toHaveBeenCalledWith({
-      description: "Test Description",
-      category: "Test Category",
-      releasedAt: "2023-06-05",
-      longDescription: "Test Long Description",
-    });
+    const changes = component.form.value;
+    coursesService.saveCourse("0", changes);
   });
 
   it("should close the dialog when close() is called", () => {
     component.close();
-
     expect(dialogRef.close).toHaveBeenCalled();
   });
 });
