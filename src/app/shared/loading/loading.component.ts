@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { Observable } from "rxjs";
 import { LoadingService } from "./loading.service";
 import {
   NavigationCancel,
@@ -26,15 +25,8 @@ export class LoadingComponent implements OnInit {
   constructor(public loadingService: LoadingService, private route: Router) {}
 
   ngOnInit() {
-    console.log(
-      "detect",
-      typeof this.detectRoutingOngoing,
-      this.detectRoutingOngoing
-    );
     if (this.detectRoutingOngoing) {
       this.route.events.subscribe((events) => {
-        //console.log(events);
-        //console.log(events instanceof NavigationStart);
         if (
           events instanceof NavigationStart ||
           events instanceof RouteConfigLoadStart

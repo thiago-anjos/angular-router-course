@@ -26,7 +26,7 @@ export class LicenseComponent implements OnInit {
   }
 
   submitForm(): void {
-    console.log("licensePlate", this.form.value.licensePlate);
-    console.log(this.form.valid);
+    // console.log("licensePlate", this.form.value.licensePlate);
+    // console.log(this.form.valid);
   }
 }
