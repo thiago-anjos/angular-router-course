@@ -18,6 +18,7 @@ const routes: Routes = [
     path: ":courseUrlDynamic",
     component: CourseComponent,
     canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
     children: [
       {
         path: "",
