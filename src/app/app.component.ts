@@ -19,11 +19,6 @@ export class AppComponent implements OnInit {
       title: "About",
       route: "about",
     },
-    {
-      title: "Login",
-      route: "login",
-      icon: "account_circle",
-    },
   ];
 
   ngOnInit() {}
