@@ -11,6 +11,7 @@ import { PageNotFoundComponent } from "./page-not-found/page-not-found.component
 import { LicenseComponent } from "./licensePlate/license/license.component";
 import { CanLoadAuthGuard } from "./services/can-load-auth.guard";
 import { CustomPrealoadingStrategy } from "./services/custom-preloading.strategy";
+import { ChatComponent } from "./chat/chat.component";
 
 const routes: Routes = [
   {
@@ -35,6 +36,11 @@ const routes: Routes = [
   {
     path: "license",
     component: LicenseComponent,
+  },
+  {
+    path: "helpdesk-chat",
+    component: ChatComponent,
+    outlet: "chat",
   },
   {
     component: PageNotFoundComponent,
