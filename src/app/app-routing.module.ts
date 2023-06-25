@@ -49,7 +49,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, {
+      enableTracing: false,
+      useHash: true,
+      scrollPositionRestoration: "top",
+    }),
+  ],
   exports: [RouterModule],
   providers: [CanLoadAuthGuard, CustomPrealoadingStrategy],
 })
