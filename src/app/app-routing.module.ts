@@ -10,6 +10,7 @@ import { AboutComponent } from "./about/about.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { LicenseComponent } from "./licensePlate/license/license.component";
 import { CanLoadAuthGuard } from "./services/can-load-auth.guard";
+import { CustomPrealoadingStrategy } from "./services/custom-preloading.strategy";
 
 const routes: Routes = [
   {
@@ -22,6 +23,9 @@ const routes: Routes = [
     loadChildren: () =>
       import("./courses/courses.module").then((m) => m.CoursesModule),
     canLoad: [CanLoadAuthGuard],
+    data: {
+      preload: false,
+    },
   },
   {
     path: "login",
@@ -42,8 +46,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, {
+      preloadingStrategy: CustomPrealoadingStrategy,
+    }),
+  ],
   exports: [RouterModule],
-  providers: [CanLoadAuthGuard],
+  providers: [CanLoadAuthGuard, CustomPrealoadingStrategy],
 })
 export class AppRoutingModule {}
