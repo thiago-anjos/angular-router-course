@@ -23,9 +23,6 @@ const routes: Routes = [
     loadChildren: () =>
       import("./courses/courses.module").then((m) => m.CoursesModule),
     canLoad: [CanLoadAuthGuard],
-    data: {
-      preload: false,
-    },
   },
   {
     path: "login",
@@ -46,11 +43,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, {
-      preloadingStrategy: CustomPrealoadingStrategy,
-    }),
-  ],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
   providers: [CanLoadAuthGuard, CustomPrealoadingStrategy],
 })
